@@ -8,14 +8,14 @@ sudo apt update 2>&1> /dev/null
 
 if [[ $CHECK1 != "xtrlock" ]]; then
 endif [[ $CHECK2 != "cmatrix" ]]
-	apt install -y xtrlock cmatrix
+	apt install -y terminatort xtrlock cmatrix
 else
 	echo "Its OK"
 fi
 
-: << 'COMMENT'
+
 XTR=$(pidof xtrlock)
-gnome-terminal --window --full-screen -e 2> /dev/null 'sh -c "cmatrix -C green -u 7 -B"'
+terminator -b -f -e 'cmatrix -C green -u 7 -B'
 xtrlock
 until [[ $XTR == "" ]] ;
 do
@@ -25,4 +25,4 @@ do
 
 done
 	killall cmatrix
-COMMENT
+
